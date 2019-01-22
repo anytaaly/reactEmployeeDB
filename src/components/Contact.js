@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Consumer } from "../context";
 
 class Contact extends Component {
   state = {
@@ -11,34 +12,43 @@ class Contact extends Component {
     this.setState({ showContactInfo: !this.state.showContactInfo });
   };
 
-  onDeleteClick = () => {
-    console.log("onShow Clicked");
+  onDeleteClick = (dispatch, id) => {
+    console.log("working");
+    dispatch({ type: "DELETE_CONTACT", payload: id });
   };
   render() {
-    const { name, email, phone } = this.props.contact;
+    const { id, name, email, phone } = this.props.contact;
+
     return (
-      <div className="card card-body mb-3">
-        <h4>
-          {" "}
-          {name}{" "}
-          <i
-            className="fas fa-sort-down"
-            onClick={this.onShowClick}
-            style={{ cursor: "pointer" }}
-          />
-          <i
-            className="fas fa-times"
-            style={{ cursor: "pointer", float: "right", color: "red" }}
-            onClick={this.onDeleteClick}
-          />
-        </h4>
-        {this.state.showContactInfo && (
-          <ul className="list-group">
-            <li className="list-group-item">{email}</li>
-            <li className="list-group-item"> {phone}</li>
-          </ul>
-        )}
-      </div>
+      <Consumer>
+        {value => {
+          const { dispatch } = value;
+          return (
+            <div className="card card-body mb-3">
+              <h4>
+                {" "}
+                {name}{" "}
+                <i
+                  className="fas fa-sort-down"
+                  onClick={this.onShowClick}
+                  style={{ cursor: "pointer" }}
+                />
+                <i
+                  className="fas fa-times"
+                  style={{ cursor: "pointer", float: "right", color: "red" }}
+                  onClick={this.onDeleteClick.bind(this, dispatch, id)}
+                />
+              </h4>
+              {this.state.showContactInfo && (
+                <ul className="list-group">
+                  <li className="list-group-item">{email}</li>
+                  <li className="list-group-item"> {phone}</li>
+                </ul>
+              )}
+            </div>
+          );
+        }}
+      </Consumer>
     );
   }
 }
