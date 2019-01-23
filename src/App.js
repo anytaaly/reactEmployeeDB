@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Provider } from "./context";
 
-import Contacts from "./components/Contacts";
-import Header from "./components/Header";
+import Contacts from "./components/contacts/Contacts";
+import Header from "./components/layout/Header";
 
 class App extends Component {
   render() {
