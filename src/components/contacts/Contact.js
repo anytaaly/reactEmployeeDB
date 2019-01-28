@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Consumer } from "../../context";
+import TextInputGroup from "../layout/TextInputGroup";
 
 class Contact extends Component {
   state = {
