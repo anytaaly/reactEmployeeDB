@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Consumer } from "../../context";
-import TextInputGroup from "../layout/TextInputGroup";
 
 class Contact extends Component {
   state = {
-    showContactInfo: true
+    showContactInfo: false
   };
 
   onShowClick = () => {
@@ -18,7 +17,7 @@ class Contact extends Component {
     dispatch({ type: "DELETE_CONTACT", payload: id });
   };
   render() {
-    const { id, name, email, phone } = this.props.contact;
+    const { id, name, email, phone, avatar } = this.props.contact;
 
     return (
       <Consumer>
@@ -27,7 +26,11 @@ class Contact extends Component {
           return (
             <div className="card card-body mb-3">
               <h4>
-                {" "}
+                <img
+                  src={avatar}
+                  alt="employeeImage"
+                  style={{ width: "50px" }}
+                />{" "}
                 {name}{" "}
                 <i
                   className="fas fa-sort-down"

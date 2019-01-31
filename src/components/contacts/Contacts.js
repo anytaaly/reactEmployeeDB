@@ -9,6 +9,10 @@ class Contacts extends Component {
         {value => {
           return (
             <div>
+              <h1 className=" mb-4 mt-4">
+                {" "}
+                <i class="fas fa-list-alt" /> Contact List{" "}
+              </h1>
               {value.contacts.map(contact => (
                 <Contact key={contact.id} contact={contact} />
               ))}
