@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Consumer } from "../../context";
+import "./Contact.scss";
 
 class Contact extends Component {
   state = {
@@ -24,13 +25,15 @@ class Contact extends Component {
         {value => {
           const { dispatch } = value;
           return (
-            <div className="card card-body mb-3">
-              <h4>
-                <img
-                  src={avatar}
-                  alt="employeeImage"
-                  style={{ width: "50px" }}
-                />{" "}
+            <div
+              className="card card-body mb-3"
+              style={{ backgroundColor: "#574b97" }}
+            >
+              <h4 className="employee">
+                <i
+                  class="far fa-user"
+                  style={{ color: "#42d8f8", paddingRight: "15px" }}
+                />
                 {name}{" "}
                 <i
                   className="fas fa-sort-down"
@@ -38,15 +41,34 @@ class Contact extends Component {
                   style={{ cursor: "pointer" }}
                 />
                 <i
-                  className="fas fa-times"
-                  style={{ cursor: "pointer", float: "right", color: "red" }}
+                  className="fas fa-trash-alt"
+                  style={{
+                    cursor: "pointer",
+                    float: "right"
+                  }}
                   onClick={this.onDeleteClick.bind(this, dispatch, id)}
                 />
               </h4>
               {this.state.showContactInfo && (
-                <ul className="list-group">
-                  <li className="list-group-item">{email}</li>
-                  <li className="list-group-item"> {phone}</li>
+                <ul
+                  className="list-group"
+                  style={{ border: "#80779d 1px solid", borderRadius: "5px" }}
+                >
+                  <li className="list-group-item">
+                    <i
+                      class="far fa-envelope"
+                      style={{ paddingRight: "10px" }}
+                    />
+                    {email}
+                  </li>
+                  <li className="list-group-item ">
+                    {" "}
+                    <i
+                      class="fas fa-headphones-alt"
+                      style={{ paddingRight: "10px" }}
+                    />
+                    {phone}
+                  </li>
                 </ul>
               )}
             </div>

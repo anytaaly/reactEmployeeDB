@@ -24,7 +24,7 @@ class AddContact extends Component {
   onSubmit = (dispatch, e) => {
     e.preventDefault();
 
-    const { name, email, phone, avatar } = this.state;
+    const { name, email, phone } = this.state;
 
     //Check for Errors Validation
     if (name === "") {
@@ -43,9 +43,7 @@ class AddContact extends Component {
       id: uuid(),
       name,
       email,
-      phone,
-      avatar:
-        "https://cdn.iconscout.com/icon/free/png-256/avatar-369-456321.png"
+      phone
     };
     dispatch({ type: "ADD_CONTACT", payload: newContact });
     this.setState({
@@ -103,7 +101,7 @@ class AddContact extends Component {
                     type="submit"
                     value="Add Contact"
                     className="btn btn-block"
-                    style={{ backgroundColor: " #5499cf", color: "#fff" }}
+                    style={{ backgroundColor: "#574b97", color: "#fff" }}
                   />
                 </form>
               </div>

@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 const Header = props => {
   const { branding } = props;
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark mb-3 py-0 my-navbar">
+    <nav className="navbar navbar-expand-sm navbar-dark mb-3 py-2 my-navbar">
       <div className="container">
         <a href="/" className="navbar-brand">
           {" "}
           <i
-            className="fas fa-address-card"
+            className="fas fa-layer-group"
             style={{ cursor: "pointer", color: "white", paddingRight: "10px" }}
           />
           {branding}{" "}

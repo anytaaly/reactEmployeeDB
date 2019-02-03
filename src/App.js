@@ -13,7 +13,7 @@ class App extends Component {
       <Provider>
         <Router>
           <div>
-            <Header branding="Contact Manager" />
+            <Header branding="Contact Manager Portal" />
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Contacts} />
